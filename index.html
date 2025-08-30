@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become A Millionaire With Exness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #0055ff;
+            --secondary: #003399;
+            --accent: #00a8ff;
+            --light: #f5f9ff;
+            --dark: #1a1a2e;
+            --success: #00cc99;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+
+        .logo-img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Screen Management */
+        .screen {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            min-height: calc(100vh - 180px);
+            padding: 40px 0;
+        }
+
+        .screen.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 153, 0.8), rgba(0, 85, 255, 0.8)), url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        /* Success Stories */
+        .success-stories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .story-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .story-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .story-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .story-card h3 {
+            color: var(--secondary);
+        }
+
+        .story-role {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* About Page */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .about-text {
+            padding-right: 20px;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Resources Page */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Exness GIFs */
+        .exness-gif {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-text {
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/27642701608" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="https://www.exness.com/static/media/logo.934e2d37.svg" alt="Exness Logo" class="logo-img">
+                    <h1>Become A Millionaire With Exness</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showScreen('home')">Home</a></li>
+                    <li><a href="#" onclick="showScreen('about')">About</a></li>
+                    <li><a href="#" onclick="showScreen('resources')">Resources</a></li>
+                    <li><a href="#" class="btn" onclick="guestLogin()">Guest Login</a></li>
+                </ul>
+                <a href="https://www.exnesspromo.com/en/trade-with-low-spread/?partner_id=c_ihs5ieuwdj" class="btn">Register Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Screen -->
+        <section id="home" class="screen active">
+            <div class="hero">
+                <h2>Unlock Your Path to Financial Freedom with Exness</h2>
+                <p>Join millions of traders worldwide who have chosen Exness for its low spreads, advanced trading platforms, and unparalleled customer support. Start your journey to financial independence today.</p>
+                <a href="https://www.exnesspromo.com/en/trade-with-low-spread/?partner_id=c_ihs5ieuwdj" class="btn">Register Now</a>
+            </div>
+
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2N1dW5jZ3F0dWw0c2Z4b3g0eGJ0N2V0b2I0Y3BkdGJ0aXJ6d3FmbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKsrf63gQkL9m2A/giphy.gif" alt="Exness Trading" class="exness-gif">
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Low Spreads</h3>
+                    <p>Trade with some of the lowest spreads in the industry, maximizing your profit potential on every trade.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Advanced Trading Platforms</h3>
+                    <p>Access cutting-edge trading platforms with advanced charting tools and lightning-fast execution.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Reliable Customer Support</h3>
+                    <p>Our dedicated support team is available 24/7 to assist you with any questions or issues you may have.</p>
+                </div>
+            </div>
+
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTZ0d2R2d2h6M2R1dHZ5Z3I1bXg3cG5wZ3V4eGxmdzV5Y2N6dWZ6dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKsrf63gQkL9m2A/giphy.gif" alt="Exness Benefits" class="exness-gif">
+
+            <h2>Success Stories</h2>
+            <div class="success-stories">
+                <div class="story-card">
+                    <div class="story-header">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Trader" class="story-avatar">
+                        <div>
+                            <h3>John Smith</h3>
+                            <p class="story-role">Full-time Trader</p>
+                        </div>
+                    </div>
+                    <p>"Since switching to Exness, I've been able to consistently grow my account thanks to their low spreads and reliable platform. I've more than doubled my investment in the past year!"</p>
+                </div>
+                <div class="story-card">
+                    <div class="story-header">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Trader" class="story-avatar">
+                        <div>
+                            <h3>Sarah Johnson</h3>
+                            <p class="story-role">Part-time Investor</p>
+                        </div>
+                    </div>
+                    <p>"As a part-time trader, Exness has given me the tools and confidence to make informed decisions. Their educational resources and customer support are exceptional."</p>
+                </div>
+                <div class="story-card">
+                    <div class="story-header">
+                        <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Trader" class="story-avatar">
+                        <div>
+                            <h3>Michael Williams</h3>
+                            <p class="story-role">Financial Advisor</p>
+                        </div>
+                    </div>
+                    <p>"I recommend Exness to all my clients. The platform's stability, tight spreads, and range of instruments make it the ideal choice for both beginners and experienced traders."</p>
+                </div>
+            </div>
+
+            <div class="cta">
+                <h2>Start Your Trading Journey Today!</h2>
+                <p>Register now and get access to exclusive bonuses and limited-time offers.</p>
+                <a href="https://www.exnesspromo.com/en/trade-with-low-spread/?partner_id=c_ihs5ieuwdj" class="btn">Register Now</a>
+            </div>
+        </section>
+
+        <!-- About Screen -->
+        <section id="about" class="screen">
+            <h2>About Exness</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Exness is a globally recognized financial broker that provides traders with access to the financial markets. Founded in 2008, our mission has always been to create the perfect trading conditions for our clients.</p>
+                    
+                    <h3>Our Mission</h3>
+                    <p>To redefine the online trading experience through cutting-edge technology, transparent pricing, and exceptional client service.</p>
+                    
+                    <h3>Our Values</h3>
+                    <ul>
+                        <li><strong>Transparency:</strong> We believe in open and honest communication with our clients.</li>
+                        <li><strong>Innovation:</strong> We continuously improve our technology and services to stay ahead.</li>
+                        <li><strong>Client Focus:</strong> Our clients' success is our top priority.</li>
+                        <li><strong>Integrity:</strong> We maintain the highest ethical standards in all our operations.</li>
+                    </ul>
+                    
+                    <p>With over $1 trillion in monthly trading volume and clients from around the world, Exness has established itself as a leader in the retail trading industry.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Exness Office">
+                </div>
+            </div>
+
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2N1dW5jZ3F0dWw0c2Z4b3g0eGJ0N2V0b2I0Y3BkdGJ0aXJ6d3FmbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKsrf63gQkL9m2A/giphy.gif" alt="Exness Global" class="exness-gif">
+
+            <div class="cta">
+                <h2>Join the Exness Community Today</h2>
+                <p>Become part of a global community of successful traders.</p>
+                <a href="https://www.exnesspromo.com/en/trade-with-low-spread/?partner_id=c_ihs5ieuwdj" class="btn">Register Now</a>
+            </div>
+        </section>
+
+        <!-- Resources Screen -->
+        <section id="resources" class="screen">
+            <h2>Trading Tips & Resources</h2>
+            <p>Enhance your trading skills with our educational resources and market analysis.</p>
+
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTZ0d2R2d2h6M2R1dHZ5Z3I1bXg3cG5wZ3V4eGxmdzV5Y2N6dWZ6dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKsrf63gQkL9m2A/giphy.gif" alt="Exness Analysis" class="exness-gif">
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>Market Analysis</h3>
+                    <p>Stay updated with daily market analysis and insights from our team of experts. Understand market trends and make informed trading decisions.</p>
+                    <a href="#" class="btn">Read Analysis</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Trading Strategies</h3>
+                    <p>Learn proven trading strategies for different market conditions. From scalping to swing trading, we have strategies for all styles.</p>
+                    <a href="#" class="btn">Learn Strategies</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Risk Management</h3>
+                    <p>Protect your capital with effective risk management techniques. Learn how to manage your trades and minimize losses.</p>
+                    <a href="#" class="btn">Manage Risk</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Webinars & Workshops</h3>
+                    <p>Join our free webinars and workshops conducted by professional traders. Enhance your knowledge and skills from the comfort of your home.</p>
+                    <a href="#" class="btn">Join Webinar</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Economic Calendar</h3>
+                    <p>Plan your trades around important economic events with our comprehensive economic calendar.</p>
+                    <a href="#" class="btn">View Calendar</a>
+                </div>
+                <div class="resource-card">
+                    <h3>FAQ & Support</h3>
+                    <p>Find answers to common questions about trading, platforms, and account management.</p>
+                    <a href="#" class="btn">Get Help</a>
+                </div>
+            </div>
+
+            <div class="cta">
+                <h2>Start Applying These Strategies Today</h2>
+                <p>Open your Exness account and begin your journey to financial freedom.</p>
+                <a href="https://www.exnesspromo.com/en/trade-with-low-spread/?partner_id=c_ihs5ieuwdj" class="btn">Register Now</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Exness, ©️ 2025 All rights reserved</p>
+            <p>Zimbabwe 🇿🇼</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to show the selected screen and hide others
+        function showScreen(screenId) {
+            // Hide all screens
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            
+            // Show the selected screen
+            document.getElementById(screenId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Function for guest login
+        function guestLogin() {
+            alert("Welcome Guest! You now have access to limited features. Register for full access.");
+            // In a real implementation, this would set a guest session
+        }
+
+        // Initialize the page with home screen active
+        document.addEventListener('DOMContentLoaded', function() {
+            showScreen('home');
+        });
+    </script>
+</body>
+  </html>
