@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become A Millionaire With Exness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #ffcc00;
+            --secondary: #000;
+            --accent: #333;
+            --light: #f5f5f5;
+            --text: #ffffff;
+            --text-secondary: #cccccc;
+            --shadow: 0 4px 12px rgba(255, 204, 0, 0.2);
+            --card-bg: rgba(51, 51, 51, 0.7);
+            --header-bg: rgba(0, 0, 0, 0.9);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--secondary);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), 
+                              url('https://files.catbox.moe/nzkoxy.jpeg');
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+        
+        body.light-theme {
+            --secondary: #f0f0f0;
+            --text: #333333;
+            --text-secondary: #555555;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --header-bg: rgba(240, 240, 240, 0.95);
+            background-image: linear-gradient(rgba(240, 240, 240, 0.9), rgba(240, 240, 240, 0.8)), 
+                              url('https://files.catbox.moe/nzkoxy.jpeg');
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--header-bg);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 35px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+        }
+        
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .btn {
+            background-color: var(--primary);
+            color: var(--secondary);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background-color: #ffd633;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--secondary);
+        }
+        
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 0.8rem;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theme-toggle:hover {
+            background-color: rgba(255, 204, 0, 0.1);
+            color: var(--primary);
+        }
+        
+        /* User Menu */
+        .user-menu-btn {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .user-menu-btn:hover {
+            background-color: rgba(255, 204, 0, 0.1);
+            color: var(--primary);
+        }
+        
+        .user-dropdown {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 15px;
+            width: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .user-dropdown.active {
+            display: flex;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .user-info i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .user-status {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .developer-info {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .developer-info p {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        
+        .developer-info .btn {
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Page Content */
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+            flex: 1;
+            padding: 30px 0;
+        }
+        
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 20px;
+        }
+        
+        .hero-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Features Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            gap: 20px;
+        }
+        
+        .feature {
+            flex: 0 0 calc(33.333% - 20px);
+            min-width: 250px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .feature p {
+            line-height: 1.6;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Success Stories */
+        .stories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px 0;
+            gap: 20px;
+        }
+        
+        .story {
+            flex: 0 0 calc(50% - 20px);
+            min-width: 300px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .story img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .story-content h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .story-content p {
+            font-style: italic;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            padding: 60px 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .cta p {
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            color: var(--text-secondary);
+        }
+        
+        /* About Page */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .about-text p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Tips Page */
+        .tips {
+            margin: 40px 0;
+        }
+        
+        .tip {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tip h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .tip p {
+            line-height: 1.6;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Platforms Page */
+        .platforms {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px 0;
+            gap: 20px;
+        }
+        
+        .platform {
+            flex: 0 0 calc(50% - 20px);
+            min-width: 300px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .platform i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .platform-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .platform-content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        
+        .platform-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+        }
+        
+        /* Contact Page */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px 0;
+            gap: 30px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .contact-info p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        
+        .contact-details {
+            margin-top: 20px;
+        }
+        
+        .contact-details div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .contact-details i {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-right: 12px;
+            width: 20px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+        }
+        
+        .contact-form h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.1);
+            color: var(--text);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        body.light-theme .form-group input,
+        body.light-theme .form-group textarea {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--header-bg);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 40px;
+            transition: var(--transition);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo img {
+            height: 35px;
+        }
+        
+        .footer-text {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .footer-text .location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        
+        .social-icons {
+            margin-bottom: 15px;
+        }
+        
+        .social-icons a {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 0 8px;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 99;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--header-bg);
+                padding: 15px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+                font-size: 1.2rem;
+                color: var(--text);
+                background: none;
+                border: none;
+                cursor: pointer;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+            }
+            
+            .menu-toggle:hover {
+                background-color: rgba(255, 204, 0, 0.1);
+                color: var(--primary);
+            }
+            
+            .hero-content, .hero-image {
+                flex: 1 0 100%;
+                padding-right: 0;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .feature {
+                flex: 0 0 100%;
+            }
+            
+            .story, .platform {
+                flex: 0 0 100%;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .platform-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .platform-buttons .btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
+        
+        .menu-toggle {
+            display: none;
+        }
+        
+        .disclaimer {
+            background: rgba(255, 204, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .disclaimer p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        /* Guest Login Form */
+        .guest-login {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 40px auto;
+            max-width: 400px;
+        }
+        
+        .guest-login h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        
+        .guest-login .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="https://files.catbox.moe/3r1483.png" alt="Exness Logo">
+                    <h1>Exness Trading</h1>
+                </div>
+                
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About Exness</a></li>
+                    <li><a href="#" class="nav-link" data-page="platforms">Platforms</a></li>
+                    <li><a href="#" class="nav-link" data-page="tips">Trading Tips</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
+                </ul>
+                
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <button class="user-menu-btn" id="userMenuBtn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    
+                    <a href="https://www.exnesspromo.com/en/trade-with-low-spread/?partner_id=c_ihs5ieuwdj" class="btn btn-small">Register Now</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- User Dropdown Menu -->
+    <div class="user-dropdown" id="userDropdown">
+        <div class="user-info">
+            <i class="fas fa-user-circle"></i>
+            <div class="user-details">
+                <div class="user-name">Signed in as Guest</div>
+                <div class="user-status">Limited access</div>
+            </div>
+        </div>
+        
+        <div class="developer-info">
+            <p>Zimbabwean Developer 🇿🇼</p>
+            <p>Hire us to work on your websites and other technical projects</p>
+            <a href="#" class="btn btn-small">Contact Developer</a>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="container">
+                <!-- Hero Section -->
+                <div class="hero">
+                    <div class="hero-content">
+                        <h2>Unlock Your Path to Financial Freedom with Exness</h2>
+                        <p>We help traders discover the exceptional trading conditions that Exness offers. Join millions of satisfied traders worldwide who benefit from transparent pricing, lightning-fast execution, and unparalleled trading conditions.</p>
+                        <a href="https://www.exnesspromo.com/en/trade-with-low-spread/?partner_id=c_ihs5ieuwdj" class="btn">Start Trading Now</a>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://files.catbox.moe/oejuip.png" alt="Trading Platform">
+                    </div>
+                </div>
+
+                <!-- Guest Login -->
+                <div class="guest-login">
+                    <h3>Try Demo Account</h3>
+                    <div class="form-group">
+                        <input type="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Create a password">
+                    </div>
+                    <button class="btn">Login as Guest</button>
+                </div>
+
+                <!-- Features Section -->
+                <div class="section-title">
+                    <h2>Why We Recommend Exness</h2>
+                    <p>After extensive research, we've found these Exness features to be exceptional for traders</p>
+                </div>
+
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Extremely Low Spreads</h3>
+                        <p>Exness offers some of the most competitive spreads we've seen in the industry, helping traders maximize their profits.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Lightning-Fast Execution</h3>
+                        <p>Trades are executed in milliseconds, which is crucial for taking advantage of market opportunities.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h3>Instant Withdrawals</h3>
+                        <p>One of the standout features of Exness is their commitment to instant withdrawal processing.</p>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="disclaimer">
+                    <p><strong>Note:</strong> We are an independent service promoting Exness trading platform. We are not directly affiliated with Exness Group but thoroughly recommend their services based on our trading experience and user feedback.</p>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="cta">
+                    <h2>Start Your Trading Journey Today!</h2>
+                    <p>Register through our link and get access to exclusive bonuses and limited-time offers.</p>
+                    <a href="https://www.exnesspromo.com/en/trade-with-low-spread/?partner_id=c_ihs5ieuwdj" class="btn">Register Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About Exness</h2>
+                    <p>Why we believe Exness stands out in the competitive trading platform market</p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Our Perspective on Exness</h2>
+                        <p>After thoroughly evaluating numerous trading platforms, we've found Exness to be exceptional in several key areas that matter to traders.</p>
+                        <p>Exness has established itself as a globally recognized financial broker that provides traders with superior access to financial markets. Since its founding in 2008, the platform has grown to serve clients from over 180 countries.</p>
+                        <p>What impresses us most about Exness is their commitment to creating the ultimate trading experience by combining cutting-edge technology with exceptional customer service.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://files.catbox.moe/nzkoxy.jpeg" alt="Exness Office">
+                    </div>
+                </div>
+
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-globe"></i>
+                        <h3>Global Presence</h3>
+                        <p>With offices in multiple countries and serving clients worldwide, Exness has truly established a global footprint that inspires confidence.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Regulated & Secure</h3>
+                        <p>Exness is regulated by multiple financial authorities, which provides an additional layer of security for traders' funds.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Award-Winning Platform</h3>
+                        <p>The numerous industry awards Exness has received validate our positive assessment of their trading conditions and technology.</p>
+                    </div>
+                </div>
+
+                <!-- Success Stories -->
+                <div class="section-title">
+                    <h2>Success Stories</h2>
+                    <p>Hear from traders who have achieved financial success with Exness</p>
+                </div>
+
+                <div class="stories">
+                    <div class="story">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Trader">
+                        <div class="story-content">
+                            <h3>Michael Johnson</h3>
+                            <p>"Thanks to Exness's low spreads and reliable platform, I've been able to grow my account by 200% in just 8 months. The instant withdrawals are a game-changer!"</p>
+                        </div>
+                    </div>
+                    <div class="story">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Trader">
+                        <div class="story-content">
+                            <h3>Sarah Williams</h3>
+                            <p>"The educational resources and customer support at Exness are exceptional. They helped me develop strategies that work in any market condition."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platforms Page -->
+        <section id="platforms" class="page">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Trading Platforms</h2>
+                    <p>Exness offers multiple advanced trading platforms designed for all experience levels</p>
+                </div>
+
+                <div class="platforms">
+                    <div class="platform">
+                        <i class="fas fa-desktop"></i>
+                        <div class="platform-content">
+                            <h3>Exness Trader App</h3>
+                            <p>The dedicated Exness trading app with advanced charting tools, technical indicators, and one-click trading.</p>
+                        </div>
+                        <div class="platform-buttons">
+                            <a href="https://www.exness.com/trading-platforms/" class="btn">Learn More</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.exness.android.pa" class="btn btn-outline">Download App</a>
+                        </div>
+                    </div>
+                    <div class="platform">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div class="platform-content">
+                            <h3>MetaTrader 4</h3>
+                            <p>The world's most popular trading platform with expert advisors, custom indicators, and automated trading capabilities.</p>
+                        </div>
+                        <div class="platform-buttons">
+                            <a href="https://www.exness.com/trading-platforms/metatrader4/" class="btn">Learn More</a>
+                            <a href="https://play.google.com/store/apps/details?id=net.metaquotes.metatrader4" class="btn btn-outline">Download MT4</a>
+                        </div>
+                    </div>
+                    <div class="platform">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="platform-content">
+                            <h3>MetaTrader 5</h3>
+                            <p>The next generation of trading platforms with more timeframes, technical indicators, and analytical tools.</p>
+                        </div>
+                        <div class="platform-buttons">
+                            <a href="https://www.exness.com/trading-platforms/metatrader5/" class="btn">Learn More</a>
+                            <a href="https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5" class="btn btn-outline">Download MT5</a>
+                        </div>
+                    </div>
+                    <div class="platform">
+                        <i class="fas fa-laptop"></i>
+                        <div class="platform-content">
+                            <h3>Web Terminal</h3>
+                            <p>Trade directly from your browser without any downloads. The Web Terminal offers full functionality.</p>
+                        </div>
+                        <div class="platform-buttons">
+                            <a href="https://www.exness.com/trading-platforms/webterminal/" class="btn">Learn More</a>
+                            <a href="https://www.exness.com/trading-platforms/" class="btn btn-outline">Start Trading</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta">
+                    <h2>Choose Your Preferred Trading Platform</h2>
+                    <p>Register through our link and get access to all Exness trading platforms with exclusive features.</p>
+                    <a href="https://www.exnesspromo.com/en/trade-with-low-spread/?partner_id=c_ihs5ieuwdj" class="btn">Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trading Tips Page -->
+        <section id="tips" class="page">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Trading Tips & Resources</h2>
+                    <p>Enhance your trading skills with expert insights and strategies</p>
+                </div>
+
+                <div class="tips">
+                    <div class="tip">
+                        <h3>Risk Management</h3>
+                        <p>Always use stop-loss orders to protect your capital. Never risk more than 1-2% of your account on a single trade. Proper risk management is the key to long-term success in trading.</p>
+                    </div>
+                    <div class="tip">
+                        <h3>Market Analysis</h3>
+                        <p>Combine both technical and fundamental analysis for better trading decisions. Stay informed about economic events that can impact the markets you trade.</p>
+                    </div>
+                    <div class="tip">
+                        <h3>Develop a Trading Plan</h3>
+                        <p>Create a detailed trading plan that includes your entry/exit strategies, risk management rules, and profit targets. Stick to your plan and avoid emotional decisions.</p>
+                    </div>
+                </div>
+
+                <div class="cta">
+                    <h2>Ready to Apply These Tips?</h2>
+                    <p>Open your Exness account today through our link and start trading with confidence!</p>
+                    <a href="https://www.exnesspromo.com/en/trade-with-low-spread/?partner_id=c_ihs5ieuwdj" class="btn">Open Account</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                    <p>Get in touch with our team for any questions about Exness</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2>We're Here to Help</h2>
+                        <p>Our team is available to assist you with any questions about trading with Exness, account management, or technical issues.</p>
+                        
+                        <div class="contact-details">
+                            <div>
+                                <i class="fab fa-whatsapp"></i>
+                                <span>+27642701608 (WhatsApp)</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-envelope"></i>
+                                <span>16ixtxxn@gmail.com</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-clock"></i>
+                                <span>Mon-Fri: 9:00 AM - 6:00 PM GMT</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Chivi District, Masvingo, Zimbabwe</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" placeholder="What is this regarding?">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/27642701608?text=Hi%20Charless%20how%20do%20I%20deposit%20and%20start%20earning%20monthly%20as%20I%20trade?" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://files.catbox.moe/3r1483.png" alt="Exness Logo">
+                </div>
+                <div class="footer-text">
+                    <p>Exness, ⓒ 2025 All rights reserved</p>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Chivi District, Masvingo, Zimbabwe 🇿🇼</span>
+                    </div>
+                    <p>We are an independent service promoting Exness trading platform</p>
+                </div>
+                <div class="social-icons">
+                    <a href="https://youtube.com/@exnesspartner-i5h?si=QshO6CLk23mGA8X0" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/share/19vd3zWHNM/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/ExnessPartner1?t=L8fCxognfnTsusMNyX-lWw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/exness_partnerships?igsh=YzljYTk1ODg3Zg==" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const themeToggle = document.getElementById('themeToggle');
+            const userMenuBtn = document.getElementById('userMenuBtn');
+            const userDropdown = document.getElementById('userDropdown');
+            
+            // Function to switch pages
+            function switchPage(pageId) {
+                // Update navigation active state
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Show selected page
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById(pageId).classList.add('active');
+                
+                // Close mobile menu if open
+                navLinksContainer.classList.remove('active');
+            }
+            
+            // Add click event to navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    switchPage(pageId);
+                    
+                    // Update URL hash
+                    window.location.hash = pageId;
+                });
+            });
+            
+            // Mobile menu toggle
+            menuToggle.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+            });
+            
+            // Theme toggle functionality
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-theme');
+                if (document.body.classList.contains('light-theme')) {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+            });
+            
+            // User dropdown toggle
+            userMenuBtn.addEventListener('click', function() {
+                userDropdown.classList.toggle('active');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!userMenuBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+                    userDropdown.classList.remove('active');
+                }
+            });
+            
+            // Check URL hash on page load
+            if (window.location.hash) {
+                const pageId = window.location.hash.substring(1);
+                if (document.getElementById(pageId)) {
+                    switchPage(pageId);
+                }
+            }
+        });
+    </script>
+</body>
+  </html>
